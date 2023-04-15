@@ -1,0 +1,5 @@
+{"properties": [{
+  "name": "log.mongodb.connectionuri",
+  "type": "java.lang.String",
+  "description": "A description for 'log.mongodb.connectionuri'"
+}]}
