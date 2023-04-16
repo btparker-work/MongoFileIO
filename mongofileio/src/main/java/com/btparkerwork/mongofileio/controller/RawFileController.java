@@ -4,9 +4,12 @@ import com.btparkerwork.mongofileio.model.RawFile;
 import com.btparkerwork.mongofileio.service.RawFileService;
 
 import java.io.IOException;
+import java.util.Date;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -36,6 +39,14 @@ public class RawFileController {
                 .contentType(MediaType.parseMediaType(loadFile.getType() ))
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + loadFile.getName() + "\"")
                 .body(new ByteArrayResource(loadFile.getData()));
+    }
+
+    @GetMapping("/dateRange")
+    public ResponseEntity<Map<String, String>> findAllByDateRange(@RequestParam("start") @DateTimeFormat(pattern = "yyyy-MM-dd") Date startDate,
+                                            @RequestParam("end") @DateTimeFormat(pattern = "yyyy-MM-dd") Date endDate) {
+
+        return ResponseEntity.ok()
+                .body(fileService.findAllByDateRange(startDate, endDate));
     }
 
 }
