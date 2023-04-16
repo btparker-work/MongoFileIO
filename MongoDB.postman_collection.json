@@ -162,6 +162,44 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "http://localhost:8081/api/rawfiles/dateRange?start=2022-01-01&end=2022-03-31",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8081/api/rawfiles/dateRange?start=2023-04-15&end=2023-04-17",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8081",
+					"path": [
+						"api",
+						"rawfiles",
+						"dateRange"
+					],
+					"query": [
+						{
+							"key": "start",
+							"value": "2023-04-15"
+						},
+						{
+							"key": "end",
+							"value": "2023-04-17"
+						}
+					]
+				}
+			},
+			"response": []
 		}
 	]
 }
