@@ -9,6 +9,7 @@ import java.util.Map;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 import org.bson.types.ObjectId;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
 import com.btparkerwork.mongofileio.model.RawFile;
@@ -25,8 +26,9 @@ import com.mongodb.client.model.Filters;
 public class RawFileRepositoryImpl implements RawFileRepository {
     private final GridFSBucket gridFSBucket;
 
-    public RawFileRepositoryImpl(MongoClient mongoClient) {
-        this.gridFSBucket = GridFSBuckets.create(mongoClient.getDatabase("products"), "rawFiles");
+    public RawFileRepositoryImpl(MongoClient mongoClient, @Value("${spring.data.mongodb.database}") String databaseName,
+            @Value("${spring.data.mongodb.gridfs.bucket}") String bucketName) {
+        this.gridFSBucket = GridFSBuckets.create(mongoClient.getDatabase(databaseName), bucketName);
     }
 
     @Override

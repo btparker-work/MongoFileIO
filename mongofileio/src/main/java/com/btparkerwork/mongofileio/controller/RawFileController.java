@@ -28,7 +28,8 @@ public class RawFileController {
     @PostMapping("/upload")
     public ResponseEntity<?> upload(@RequestParam("file")MultipartFile file) throws IOException {
         
-        return new ResponseEntity<>(fileService.save(file), HttpStatus.OK);
+        //return new ResponseEntity<>(fileService.save(file), HttpStatus.OK);
+        return new ResponseEntity<>("upload disabled", HttpStatus.OK);
     }
 
     @GetMapping("/download/{id}")
